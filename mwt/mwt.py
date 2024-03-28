@@ -1,5 +1,4 @@
 import base64
-from enum import Enum
 import hashlib
 import hmac
 from uuid import UUID
@@ -7,7 +6,7 @@ from uuid import UUID
 from .exceptions import InvalidSignature, InvalidStructure
 from .utils import align_b64, validate_hmac
 
-def create_token(data: str, key: bytes, mwt_id: UUID, purpose: Enum) -> str:
+def create_token(data: str, key: bytes, mwt_id: UUID, purpose: bytes) -> str:
     # encoding segments
     segments = [
         base64.urlsafe_b64encode(data.encode('utf-8')).rstrip(b'='),
@@ -26,7 +25,7 @@ def create_token(data: str, key: bytes, mwt_id: UUID, purpose: Enum) -> str:
     return b".".join(segments).decode("utf-8")
 
 
-def validate_token(token: str, key: bytes, enum: type) -> tuple[str, UUID, Enum]:
+def validate_token(token: str, key: bytes) -> tuple[str, UUID, bytes]:
     try:
         # segmentation
         data_b64, purpose_b64, signature_b64 = token.split('.')
@@ -47,6 +46,6 @@ def validate_token(token: str, key: bytes, enum: type) -> tuple[str, UUID, Enum]
     ):
         raise InvalidSignature("Invalid signature")
 
-    return data.decode("utf-8"), mwt_id, enum(purpose)
+    return data.decode("utf-8"), mwt_id 
 
 
