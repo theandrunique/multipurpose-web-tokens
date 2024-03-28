@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "multipurpose-web-tokens"
+name = "mwt"
 version = "0.1.0"
-description = "The idea is to create multi-purpose tokens for web applications"
+description = "MWT - Multipurpose Web Tokens. The idea is to create multi-purpose tokens for web applications"
 authors = ["theandrunique <theandrunique@gmail.com>"]
 license = "MIT"
 readme = "README.md"
