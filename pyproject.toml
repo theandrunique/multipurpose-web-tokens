@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "multipurpose-web-tokens"
+name = "mwt"
 version = "0.1.0"
-description = "The idea is to create multi-purpose tokens for web applications"
+description = "MWT - Multipurpose Web Tokens. The idea is to create multi-purpose tokens for web applications"
 authors = ["theandrunique <theandrunique@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -9,6 +9,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
 
 [build-system]
 requires = ["poetry-core"]
